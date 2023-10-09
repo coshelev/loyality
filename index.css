@@ -1,0 +1,133 @@
+.body{	
+	background-color: white;
+	_margin-top: 0px;
+	_margin-right:0px;
+	_margint-bottom: 0px;
+	_margin-left: 0px;
+}
+
+.caption {
+	margin-top:5  px;
+	_margin-right:0%;
+	_margint-bottom: 5px;
+	margin-left:1%;
+	background-color: whitesmoke;
+	border-top-left-radius: 6px;
+  	border-top-right-radius: 6px;
+  	border-bottom-left-radius: 6px;
+  	border-bottom-right-radius: 6px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	font-family: 'docs-Roboto', Helvetica, Arial, sans-serif;
+	font-size: xxx-large;
+	letter-spacing: 0;
+	text-align:center;
+	/*display:flex;*/
+}
+
+.question {
+	background-color: whitesmoke;
+	margin-top:5%;
+	margin-right:1%;
+	margint-bottom: 5%;
+	margin-left:1%;
+	border-top-left-radius: 6px;
+  	border-top-right-radius: 6px;
+  	border-bottom-left-radius: 6px;
+  	border-bottom-right-radius: 6px;
+	padding-top: 1%;
+	padding-right: 1%;
+	padding-bottom: 1%;
+	padding-left: 1%;
+	font-family: 'docs-Roboto', Helvetica, Arial, sans-serif;
+	font-size: xx-large;
+}
+
+.label_question{
+	border: 0px solid black !important;		
+}
+
+.div_radios{
+	border: 0px solid black !important;	
+	margint-top: 1%;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 1%;
+	padding-left: 1%;
+	font-size: xx-large;
+}
+
+.div_radios label{
+	display: block;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 1%;
+}
+
+
+.label_radio{
+	/*background-color: grey;*/
+	border: 5px solid grey;	
+
+	margin-top: 1%;
+	margin-right: 75%;
+	margin-bottom: 1%;
+	margin-left: 1%;
+
+	padding-top:0%;
+	padding-right:1%;
+	padiing-bottom:0%;
+	padding-left: 1%;
+
+	font-size: xxx-large;
+
+}
+
+
+.div_comment label{
+	font-size: xx-large;
+}
+
+.div_comment input{
+	margin-top: 10px;
+	margin-bottom: 10p;
+	width: 98%;
+	font-size: xxx-large;
+}
+
+.div_comment textarea{
+	background-color: yellow;
+	font-size: xx-large;
+	width: 250px;
+        height: 100px;
+}
+
+
+.textarea_comment{
+	font-size: xx-large;
+	width: 100%;
+}
+
+.divsubmit{
+	margin-top: 0px;
+	margin-right:3%;
+	margint-bottom: 10px;
+	margin-left:1%;
+}
+
+.btnsubmit{
+
+	background-color: blue;
+	border: none;
+	border-radius: 5px;
+	padding-top: 5%;
+	padding-right: 10%;
+	padding-bottom: 5%;
+	padding-left: 10%;
+	font-size: xx-large;  
+	color: white; 
+	text-align: center;
+	display: inline-block;
+}
