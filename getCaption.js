@@ -5,5 +5,7 @@ if (poc == 'kgc'|| poc == 'kgg') address = 'ул. Ярослава Гашека,
 if (poc == 'ksg'|| poc == 'kgc'|| poc == 'kgc') address = 'Сибирский тракт, 59';
 if (poc == 'cmg'|| poc == 'cmk') address = 'ул. Механическая, 14/5';
 if (poc == 'cvk') address = 'ул. Валдайская, 17Б';
+if (poc == 'sgt') address = 'ул. Пролетарская, 142А';
+if (poc == 'stk') address = 'ул. Пролетарская, 144А';
 const divCaption = document.getElementById("div_Caption_id");
 divCaption.innerHTML = 'Мы благодарим Вас за то, что Вы воспользовались услугами техцентра Луидор'+' '+address;
