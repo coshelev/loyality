@@ -4,13 +4,20 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="index.css" type="text/css">
 	<title>Анкета опроса</title>
+	<title>Questionnaire</title>
+  <style>
+    .question {
+      display: none;
+    }
+  </style>
+
 </head>
 <body  class="body">
 <div>	
 
 	<form id = "myForm"  method = "post" action="https://luidor.ru/sk/llt/handler.php">
 
-	<div id ="div_Caption_id" class = "caption">!Мы благодарим Вас за то, что Вы воспользовались услугами техцентра Луидор по адресу ул. Ярослава Гашека, 7, корп. 1</div>
+	<div id ="div_Caption_id" class = "caption">Мы благодарим Вас за то, что Вы воспользовались услугами техцентра Луидор</div>
 
 	<div class = "question">
 		<div>
@@ -99,7 +106,7 @@
 
 	<div class = "question">
 		<div>
-			<label> Поделитесь, пожалуйста, что Вам не понравилось</label>
+			<label> Поделитесь, пожалуйста, что Вам не понравилось?</label>
 		</div>
 		<div class = "divider_in_question"><br></div>
 
@@ -117,13 +124,50 @@
 
 	</form>
 
-
 </div>
 </body>
+
 <script src = getCaption.js></script>
 
+<script> let positive = 0</script>
+
 <script>
-  	//Define input parameters
+  	
+	document.addEventListener("DOMContentLoaded", function() {
+        const questions = document.querySelectorAll(".question");
+        let currentQuestionIndex = 0;
+	let currentPositive = 0;
+        // Show the first question initially
+        questions[currentQuestionIndex].style.display = "block";
+
+        // Attach event listeners to radio inputs
+        const radioInputs = document.querySelectorAll(".label_radio input");
+        radioInputs.forEach(function(input) {
+            input.addEventListener("click", function() {
+                // Get the value of the selected radio input
+                const selectedValue = input.value;
+                // If the selected value is 1-8, move to the next question
+                if ( selectedValue <= 8) {
+                    // Hide the current question
+                    questions[currentQuestionIndex].style.display = "none";
+                    // Move to the next question
+                    currentQuestionIndex++;
+                    currentPositive = 0;		
+					// If there's a next question, show it
+                    if (currentQuestionIndex < questions.length) {
+                        questions[currentQuestionIndex].style.display = "block";
+						currentPositive++;
+                    }
+                };
+		//If it is the first question and selected value > 10 - complete
+		if (currentQuestionIndex ==0 || selectedValue > 8) {
+			positive = 1;	
+		};
+            });
+        });
+    });
+	
+	//Define input parameters
 	const params = new URLSearchParams(window.location.search);
 	
 	const pc = params.get("pc");
@@ -145,8 +189,6 @@
 	const day = isoString.slice(8, 10);
 	const dateString = year+month+day;
 
-	
-
 	const form = document.getElementById('myForm');
   	form.addEventListener('submit', (event) => {
     		event.preventDefault(); 				// prevent default form submission
@@ -160,23 +202,13 @@
 		data['phone']		= phone;
 		data['date']		= dateString;
 	
-
-		let positive = 0;
-    		for (const [key, value] of formData.entries())
-			{
-				//Fill structure
-				data[key] = value; // add form data to object
-
-				//Is questionnaire positive?
-				if (key=="question1" && value >8)  {positive = positive+1}; 
+		//console.log(currentPositive);
 			
-			};
+		const jsonData = JSON.stringify(data); 			// convert object to JSON string
+		console.log(jsonData); 					// log JSON string to console (for testing)
 
 		console.log(positive);
-		
-			
-    		const jsonData = JSON.stringify(data); 			// convert object to JSON string
-    		console.log(jsonData); 					// log JSON string to console (for testing)
+
 
     		// send JSON string to server using AJAX or fetch API		
 		const url = 'https://luidor.ru/sk/llt/handler.php';
@@ -193,27 +225,43 @@
     				link.href = 'https://maps.yandex.ru';
 
 				//Kazan
-				if (pointCode == 'kgc') link.href = 'https://yandex.ru/maps/org/202117238419';
-				if (pointCode == 'kgg') link.href = 'https://yandex.ru/maps/-/CDQSM-nP';
-				if (pointCode == 'ksg') link.href = 'https://yandex.ru/maps/-/CDQK5I2x';
-				if (pointCode == 'ksu') link.href = 'https://yandex.ru/maps/-/CDQK5U~c';
-				if (pointCode == 'ksf') link.href = 'https://yandex.ru/maps/-/CDQK5R~-';
+					if (pointCode == 'kgc') link.href = 'https://yandex.ru/maps/org/202117238419';
+					if (pointCode == 'kgg') link.href = 'https://yandex.ru/maps/-/CDQSM-nP';
+					if (pointCode == 'ksg') link.href = 'https://yandex.ru/maps/-/CDQK5I2x';
+					if (pointCode == 'ksu') link.href = 'https://yandex.ru/maps/-/CDQK5U~c';
+					if (pointCode == 'ksf') link.href = 'https://yandex.ru/maps/-/CDQK5R~-';
 
 				//Saransk
-				if (pointCode == 'sgt') link.href = 'https://yandex.ru/maps/-/CDaWn-if';
-				if (pointCode == 'stk') link.href = 'https://yandex.ru/maps/-/CDaWn2-d';
+					if (pointCode == 'sgt') link.href = 'https://yandex.ru/maps/-/CDaWn-if';
+					if (pointCode == 'stk') link.href = 'https://yandex.ru/maps/-/CDaWn2-d';
+					if (pointCode == 'stg') link.href = 'https://yandex.ru/maps/org/55996023099';
 				
 				//Chelyabinsk
-				if (pointCode == 'cmg') link.href = 'https://yandex.ru/maps/-/CDaYEG8m';
-				if (pointCode == 'cmk') link.href = 'https://yandex.ru/maps/-/CDaYEC6f';
-				if (pointCode == 'cvk') link.href = 'https://yandex.ru/maps/-/CDaYUY62';
-
+					if (pointCode == 'cmg') link.href = 'https://yandex.ru/maps/-/CDaYEG8m';
+					if (pointCode == 'cmk') link.href = 'https://yandex.ru/maps/-/CDaYEC6f';
+					if (pointCode == 'cvk') link.href = 'https://yandex.ru/maps/-/CDaYUY62';
+				
+				//Ufa
+					if (pointCode == 'uvtg') link.href = 'https://yandex.ru/maps/org/195787811006';
+				
+				//Cheboksary
+					if (pointCode == 'chtg') link.href = 'https://yandex.ru/maps/-/CDBCiUjO';
+				
+				//Tambov
+					if (pointCode == 'ttg') link.href = 'https://yandex.ru/maps/org/1785393162';
+				
+				//NN
+					if (pointCode == 'g12tg') link.href = 'https://yandex.ru/maps/org/189643444831';
+					if (pointCode == 'g18tg') link.href = 'https://yandex.ru/maps/org/196508773221';
+					if (pointCode == 'gptg') link.href = 'https://yandex.ru/maps/org/1115062577';
+				
 
     			link.textContent = 'Оставте пожалуйста положительный отзыв на Яндекс Картах'; 
 				link.style.color = 'blue';
 				link.style.textDecoration = 'underline';  
 				link.style.fontSize = 'xx-large'; 			
-    				document.body.appendChild(link);};
+    			document.body.appendChild(link);};
+			
 			if (positive == 0){
 				document.body.innerHTML = 'Спасибо за обратную связь!';};
 
