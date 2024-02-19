@@ -124,6 +124,7 @@
 
 	</form>
 
+
 </div>
 </body>
 
@@ -189,6 +190,8 @@
 	const day = isoString.slice(8, 10);
 	const dateString = year+month+day;
 
+	
+
 	const form = document.getElementById('myForm');
   	form.addEventListener('submit', (event) => {
     		event.preventDefault(); 				// prevent default form submission
@@ -209,7 +212,6 @@
 
 		console.log(positive);
 
-
     		// send JSON string to server using AJAX or fetch API		
 		const url = 'https://luidor.ru/sk/llt/handler.php';
 		const options = {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(jsonData)};
@@ -219,6 +221,17 @@
 			document.body.innerHTML = '';
 
 			if (positive > 0){
+				
+				//Add just a text
+				var par  = document.createElement("p");
+				var text = document.createTextNode("Благодарим Вас за высокую оценку!");
+				par.appendChild(text);
+				par.style.color = 'red';
+				par.style.fontSize = 'xx-large';
+				document.body.appendChild(par);
+
+				//Add yandex map link
+				//---------------------
     				const link = document.createElement('a');
 				
 				//default URL
@@ -256,7 +269,7 @@
 					if (pointCode == 'gptg') link.href = 'https://yandex.ru/maps/org/1115062577';
 				
 
-    			link.textContent = 'Оставте пожалуйста положительный отзыв на Яндекс Картах'; 
+    			link.textContent = 'Оставте пожалуйста положительный отзыв по этой ссылке на Яндекс Картах'; 
 				link.style.color = 'blue';
 				link.style.textDecoration = 'underline';  
 				link.style.fontSize = 'xx-large'; 			
