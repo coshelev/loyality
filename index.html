@@ -157,6 +157,7 @@
   	
 	document.addEventListener("DOMContentLoaded", function() {
         const questions = document.querySelectorAll(".question");
+		const divSubmit = document.getElementsByClassName("divsubmit")[0];
         let currentQuestionIndex = 0;
 	let currentPositive = 0;
         // Show the first question initially
@@ -168,23 +169,36 @@
             input.addEventListener("change", function() {
                 // Get the value of the selected radio input
                 const selectedValue = input.value;
-                // If the selected value is 1-8, move to the next question
-                if ( selectedValue <= 8) {
+
+				//If it is the first question and selected value > 10 - complete
+		if (currentQuestionIndex ==0 && selectedValue > 8) {
+			positive = 1;	
+			divSubmit.style.display="block";
+		};
+
+                // If answer is not positive go to the next question
+                if ( positive == 0) {
+
                     // Hide the current question
                     questions[currentQuestionIndex].style.display = "none";
+
+			//Hide submit button at last question
+			if (currentQuestionIndex < (questions.length-2)) 
+				{divSubmit.style.display="none"}
+			else 
+				{divSubmit.style.display="block"};
+
                     // Move to the next question
                     currentQuestionIndex++;
-                    currentPositive = 0;		
-					// If there's a next question, show it
-                    if (currentQuestionIndex < questions.length) {
+                    currentPositive = 0;
+		
+		    // If there's a next question, show it
+                  	if (currentQuestionIndex < questions.length) {
                         questions[currentQuestionIndex].style.display = "block";
 						currentPositive++;
                     }
                 };
-		//If it is the first question and selected value > 10 - complete
-		if (currentQuestionIndex ==0 || selectedValue > 8) {
-			positive = 1;	
-		};
+	
             });
         });
     });
