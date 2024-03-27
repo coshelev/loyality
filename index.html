@@ -139,12 +139,24 @@
 	if (poc == 'sgt') address = 'ул. Пролетарская, 142А';
 	if (poc == 'stk') address = 'ул. Пролетарская, 144А';
 	if (poc == 'stg') address = 'ул. Пролетарская, 142А';
+	if (poc == 'ctka') address = 'ул. Пролетарская, 144А';
+
 	if (poc == 'ttg') address = 'Моршанское ш., 24Б';
+	if (poc == 'tste') address = 'бул. Строителей, 5Л';
+
+
 	if (poc == 'uvtg') address = 'Трактовая ул., 15';
+	if (poc == 'uvtk') address = 'ул. Интернациональная, 20';
+
 	if (poc == 'chtg') address = 'Марпосадское ш., 1Д';
+	if (poc == 'chtg') address = 'Марпосадское ш., 1';
+
 	if (poc == 'g12tg') address = 'ул. Ларина, 12к1';
 	if (poc == 'g18tg') address = 'ул. Ларина, 18';
 	if (poc == 'gptg') address = 'ул. Поющева, 22';
+	if (poc == 'ngpt') address = 'ул. Полевая, 8к2';
+	if (poc == 'ngtk') address = 'просп. Гагарина, 178Ч';
+
 	const divCaption = document.getElementById("div_Caption_id");
 	divCaption.innerHTML = 'Мы благодарим Вас за то, что Вы воспользовались услугами техцентра Луидор'+' '+address;
 </script>
@@ -171,10 +183,10 @@
                 const selectedValue = input.value;
 
 				//If it is the first question and selected value > 10 - complete
-		if (currentQuestionIndex ==0 && selectedValue > 8) {
-			positive = 1;	
-			divSubmit.style.display="block";
-		};
+				if (currentQuestionIndex ==0 && selectedValue > 8) {
+					positive = 1;	
+					divSubmit.style.display="block";
+				};
 
                 // If answer is not positive go to the next question
                 if ( positive == 0) {
@@ -182,11 +194,11 @@
                     // Hide the current question
                     questions[currentQuestionIndex].style.display = "none";
 
-			//Hide submit button at last question
-			if (currentQuestionIndex < (questions.length-2)) 
-				{divSubmit.style.display="none"}
-			else 
-				{divSubmit.style.display="block"};
+					//Hide submit button at last question
+					if (currentQuestionIndex < (questions.length-2)) 
+						{divSubmit.style.display="none"}
+					else 
+						{divSubmit.style.display="block"};
 
                     // Move to the next question
                     currentQuestionIndex++;
@@ -291,26 +303,32 @@
 					if (pointCode == 'sgt') link.href = 'https://yandex.ru/maps/-/CDaWn-if';
 					if (pointCode == 'stk') link.href = 'https://yandex.ru/maps/-/CDaWn2-d';
 					if (pointCode == 'stg') link.href = 'https://yandex.ru/maps/org/55996023099';
+					if (pointCode == 'ctka') link.href = 'https://yandex.ru/maps/org/55996023099';
+
 				
 				//Chelyabinsk
 					if (pointCode == 'cmg') link.href = 'https://yandex.ru/maps/-/CDaYEG8m';
 					if (pointCode == 'cmk') link.href = 'https://yandex.ru/maps/-/CDaYEC6f';
-					if (pointCode == 'cvk') link.href = 'https://yandex.ru/maps/-/CDaYUY62';
+					if (pointCode == 'cvk') link.href = 'https://yandex.ru/maps/-/CDRqiJ2I';
 				
 				//Ufa
 					if (pointCode == 'uvtg') link.href = 'https://yandex.ru/maps/org/195787811006';
+					if (pointCode == 'uvtk') link.href = 'https://yandex.ru/maps/org/luidor/127278282128/';
 				
 				//Cheboksary
 					if (pointCode == 'chtg') link.href = 'https://yandex.ru/maps/-/CDBCiUjO';
+					if (pointCode == 'chks') link.href = 'https://yandex.ru/maps/-/CDBCiUjO';
 				
 				//Tambov
 					if (pointCode == 'ttg') link.href = 'https://yandex.ru/maps/org/1785393162';
+					if (pointCode == 'tste') link.href = 'https://yandex.ru/maps/org/k_servis_luidor/74798571120/';
 				
 				//NN
 					if (pointCode == 'g12tg') link.href = 'https://yandex.ru/maps/org/189643444831';
 					if (pointCode == 'g18tg') link.href = 'https://yandex.ru/maps/org/196508773221';
 					if (pointCode == 'gptg') link.href = 'https://yandex.ru/maps/org/1115062577';
-				
+					if (pointCode == 'ngpt') link.href = 'https://yandex.ru/maps/org/luidor/241361545098/';
+					if (pointCode == 'ngtk') link.href = 'https://yandex.ru/maps/org/luidor/164133101554/';
 
     			link.textContent = 'Оставте пожалуйста положительный отзыв по этой ссылке на Яндекс Картах'; 
 				link.style.color = 'blue';
